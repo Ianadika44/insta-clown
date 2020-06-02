@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http  import HttpResponse
 from .models import Post
 from django import forms
-from .forms import NewsLetterForm
+from .forms import NewsLetterForm,NewPostForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -23,7 +23,7 @@ def new_post(request):
         form = NewPostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.profile = current_user
+            post.Profile = current_user
             post.save()
         return redirect('Profile')
 
