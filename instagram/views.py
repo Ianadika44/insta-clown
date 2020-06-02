@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http  import HttpResponse
 from .models import Post
 from django import forms
@@ -14,7 +14,7 @@ def profile(request):
     posts = Post.objects.all
     
     
-    return render(request, 'profile.html', {"posts":posts,"form":form})
+    return render(request, 'profile.html', {"posts":posts})
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
@@ -25,7 +25,7 @@ def new_post(request):
             post = form.save(commit=False)
             post.Profile = current_user
             post.save()
-        return redirect('Profile')
+        return redirect('new_post.html')
 
     else:
         form = NewPostForm()
