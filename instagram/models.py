@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 
 # Create your models here.
 
@@ -22,6 +23,8 @@ class Post(models.Model):
     caption = models.CharField(max_length =30)
     like = models.IntegerField(default=0)
     profile_pic = models.ImageField(upload_to = 'post/')
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    post = HTMLField()
     
     @classmethod
     def search_by_title(cls,search_term):

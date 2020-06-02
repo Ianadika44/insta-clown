@@ -1,22 +1,26 @@
 from django.shortcuts import render
 from django.http  import HttpResponse
 from .models import Post
+from django import forms
 from .forms import NewsLetterForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def welcome(request):
     return render(request, 'welcome.html')
+
 @login_required(login_url='/accounts/login/')
 def profile(request):
-    profile = profile.objects.all
-    return render(request, 'profile.html', {"instagram":instagram,"letterForm":form})
+    posts = Post.objects.all
+    
+    
+    return render(request, 'profile.html', {"posts":posts,"form":form})
 
 def other_profile(request,id):
     profile_user=User.objects.filter(id=id).first()
     posts=Post.objects.all()
     
-    return HttpResponse(html)
+    return render(request, 'more.html', {"posts":posts,"form":form})
 
 def search_results(request):
 
