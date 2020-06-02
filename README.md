@@ -19,3 +19,10 @@
 - git clone the repo
 - Navigate to the folder $ cd  the name of the folder
 - use python3.6 manage.py runserver to run this              application
+
+## Projects link
+
+## Contact info
+- Email:adika19ian@gmail.com.
+- Phone:0757441659.
+- Github name:Ianadika44
