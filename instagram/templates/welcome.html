@@ -34,7 +34,35 @@
         </div>
 
     </form>
+    <div class="col-sm-6 col-md-6">
+        {% if user.is_authenticated %}
+        <ul>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                      <span class="caret"></span>
+                  </a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="{%url 'profile'%}">Home</a>
+              </li>
+              <li>
+                <a href="/accounts/password/change">Change Password</a>
+              </li>
+              <li>
+                <a href="/logout">Logout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        {% else %}
+        <li>
+          <a class='btn btn-default' href="/accounts/login">Login</a>
+        </li>
+    
+        {% endif %}
+      </div>
 </div>
+
 
 
 
@@ -57,7 +85,7 @@
 
                 <h10 class=" card-content">
                     <img src="/media/post/IMG_20200309_135114_913.jpg" height="30" class="round" alt="">
-                    <strong> ml.india </strong> </h10>
+                    <strong> ian </strong> </h10>
                 <p class="paid-text card-content"> Software engineer<br> Nairobi, Kenya</p>
 
                 <img src="/media/post/IMG_20200309_135120_175.jpg" height="300" width="100"

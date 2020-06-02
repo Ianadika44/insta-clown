@@ -2,13 +2,14 @@ from django.shortcuts import render
 from django.http  import HttpResponse
 from .models import Post
 from .forms import NewsLetterForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def welcome(request):
     return render(request, 'welcome.html')
-
+@login_required(login_url='/accounts/login/')
 def profile(request):
-    post = post.objects.all
+    profile = profile.objects.all
     return render(request, 'profile.html', {"instagram":instagram,"letterForm":form})
 
 def other_profile(request,id):
