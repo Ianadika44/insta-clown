@@ -1,63 +1,24 @@
 {%extends 'base.html'%} 
-{% load bootstrap3 %}
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://kit.fontawesome.com/7f3bd65769.js" crossorigin="anonymous"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+{% block content %}
 
-  {% if title %}
-  <title>Instapic - {{title}}</title>
-  {% else %}
-    <title> Instapic </title>
-  {% endif %}
+<div class="container">
 
-  {% block styles %}
-    {% bootstrap_css %}
-  {% endblock %}
-
-</head>
-<div id='center' style="text-align: center;padding-top: 15px;">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-      <a href='/'><i class="fab fa-instagram fa-7x " style="color: red;"><hr></i>&nbsp;<br><strong style="font-weight: bold; font-size:xx-large ;font-style:italic;color:black;">Instagram</strong></a>
+  <div class="row">
+    <img src="{{post.post_image.url}}"  class="img-responsive" alt="">
   </div>
-  <div class="container-fluid">
 
-    <form  action="{%url 'newsToday'%}" method="post">
-      {%csrf_token%}
-  
-      {% bootstrap_form letterForm layout='inline' %}
-      <input type="submit" value="Subscribe">
-    </form>
-  
-  
+  <div class="row">
+    <h1 class="text-center">{{post.title}}</h1>
+  </div>
 
-    <div class="col-sm-4 col-md-4 navbar-right">
+  <div class="row">
+    {% autoescape on %}
+    {{post.post| safe}}
+   {% endautoescape %}
 
-        <form class="navbar-form" role="search" action="{% url 'search_results' %}">
-
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search Profile" name="article">
-            <div class="input-group-btn">
-              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-          </div>
-
-        </form>
-      </div>
+  </div>
 
 
-<body>
-    {% block content %}  {%endblock%}
+</div>
 
-    {% block scripts %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     {% bootstrap_javascript %}
-    {% endblock %}
-</body>
-</html>
+{% endblock %}

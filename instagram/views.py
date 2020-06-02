@@ -16,12 +16,20 @@ def profile(request):
     
     return render(request, 'profile.html', {"posts":posts,"form":form})
 
-def other_profile(request,id):
-    profile_user=User.objects.filter(id=id).first()
-    posts=Post.objects.all()
-    
-    return render(request, 'more.html', {"posts":posts,"form":form})
+@login_required(login_url='/accounts/login/')
+def new_post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.profile = current_user
+            post.save()
+        return redirect('Profile')
 
+    else:
+        form = NewPostForm()
+    return render(request, 'new_post.html', {"form": form})
 def search_results(request):
 
     if 'post' in request.GET and request.GET["post"]:
