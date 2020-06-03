@@ -22,9 +22,9 @@ def new_post(request):
     if request.method == 'POST':
         form = NewPostForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.Profile = current_user
-            post.save()
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
         return redirect('new_post.html')
 
     else:

@@ -8,7 +8,7 @@ urlpatterns=[
     url(r'^accounts/profile/$',views.profile,name = 'profile'),
     url(r'^profile/(\d+)',views.new_post,name = 'visitprofile'),
     url(r'^search/', views.search_results, name='search_results'),
-    url(r'^new/post$', views.new_post, name='new-post')
+    url(r'^new/post$', views.new_post, name='new_post')
     
 
 ]
