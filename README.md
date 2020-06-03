@@ -13,6 +13,14 @@
 - Html
 - Django
 
+## GETTING STARTED
+- Have python3.6
+- Internet Connection
+- git clone the project on your local machine
+- Navigate to the folder $ cd the name of the folder
+- Set up virtual environment in project folder
+- Use python3.6 manage.py runserver to run this application
+
 ## SETUP REQUIREMENTS
 - Python 3.6
 - Internet Connection
